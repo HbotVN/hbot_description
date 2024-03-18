@@ -11,7 +11,15 @@ find_package(ament_cmake REQUIRED)
 # further dependencies manually.
 # find_package(<dependency> REQUIRED)
 
-install(DIRECTORY src launch rviz urdf
+message(STATUS ${CMAKE_SOURCE_DIR}/urdf)
+install(CODE "
+  execute_process(
+    COMMAND bash -c \"xacro hbot.urdf.xacro > hbot.urdf\"
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/urdf
+  )"
+)
+
+install(DIRECTORY launch rviz urdf
   DESTINATION share/${PROJECT_NAME}
 )
 ament_package()
