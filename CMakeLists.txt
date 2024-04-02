@@ -12,11 +12,9 @@ find_package(ament_cmake REQUIRED)
 # find_package(<dependency> REQUIRED)
 
 message(STATUS ${CMAKE_SOURCE_DIR}/urdf)
-install(CODE "
-  execute_process(
-    COMMAND bash -c \"xacro hbot.urdf.xacro > hbot.urdf\"
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/urdf
-  )"
+execute_process(
+  COMMAND bash -c "xacro hbot.urdf.xacro > hbot.urdf && gz sdf -p hbot.urdf > hbot.sdf"
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/urdf
 )
 
 install(DIRECTORY launch rviz urdf
