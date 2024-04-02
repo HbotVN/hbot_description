@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <robot name="hbot" xmlns:xacro="http://ros.org/wiki/xacro">
 
-  <xacro:include filename="$(find hbot_description)/urdf/inertials.xacro" />
-  <xacro:include filename="$(find hbot_description)/urdf/materials.xacro" />
+  <xacro:include filename="inertials.xacro" />
+  <xacro:include filename="materials.xacro" />
 
   <!-- Define some constants -->
   <xacro:property name="base_width" value="0.14"/>
